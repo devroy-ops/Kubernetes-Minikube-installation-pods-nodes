@@ -1,0 +1,87 @@
+*********************************************Start************************************
+
+
+Note:-Ubuntu instance with minimum 2cpu required.
+
+
+
+Note:-Now install docker
+
+Step-1 sudo apt update && apt -y install docker.io
+
+Note:-install Kubectl
+
+Step-2 curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl && chmod +x ./kubectl && sudo mv ./kubectl /usr/local/bin/kubectl
+
+Note:-install Minikube
+
+Step-3 curl -Lo minikube https://storage.googleapis.com/minikube/release/latest/minikube-linux-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/
+
+Step-4 apt install conntrack
+
+Note:- Installaton steps 
+
+https://phoenixnap.com/kb/install-minikube-on-ubuntu
+
+Step-5 wget https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64                                                                                     
+
+Step-6 sudo cp minikube-linux-amd64 /usr/local/bin/minikube
+    
+Step-7  sudo chmod 755 /usr/local/bin/minikube
+    
+Step-8  minikube version
+
+Step-9  curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl                                                                                                                                                                      ux/amd64/kubectl
+   
+Step-10 chmod +x ./kubectl
+
+Step-11 kubectl version -o json
+  
+Step-12 minikube start --vm-driver=none
+   
+Step-13 minikube start
+   
+Step-14 minikube status
+    
+Note:- If need
+    
+Step-1 sudo apt-get update -y
+
+Step-2  sudo apt-get upgrade -y
+
+
+Step-15 kubectl get nodes (check nodes)
+
+Step-16 kubectl describe node ip-172-31-37-101 (Check node describe)
+
+step-17 vi pod1.yml (Create yml file for echo command)
+
+kind: Pod                              
+apiVersion: v1                     
+metadata:                           
+  name: testpod                  
+spec:                                    
+  containers:                      
+    - name: c00                     
+      image: ubuntu              
+      command: ["/bin/bash", "-c", "while true; do echo Hello-Bhupinder; sleep 5 ; done"]
+  restartPolicy: Never         # Defaults to Always
+
+
+step-18 kubectl apply -f pod1.yml
+
+Step-19 kubectl get pods
+
+Step-20 kubectl get pods -o wide (Check all pods deatils with instance)
+
+Step-21 kubectl describe pod testpod (check pods like- testpod)
+
+Step-22 kubectl logs -f testpod (check what is running in container)
+
+Step-23 kubectl logs -f testpod -c c00 (check what is runing in container with caontainer name like-c00
+
+Step-24 kubectl delete pod testpod (delete pod)
+
+
+
+*******************************************END**************************************
